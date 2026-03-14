@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "crud-app-backend"
+version = "1.0.0"
+description = "REST API with Authentication & Role-Based Access Control"
+authors = ["Your Name <you@example.com>"]
+package-mode = false
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = "^0.115.0"
+uvicorn = {extras = ["standard"], version = "^0.30.0"}
+sqlalchemy = "^2.0.0"
+psycopg2-binary = "^2.9.0"
+cryptography = "^43.0.0"
+pydantic = {extras = ["email"], version = "^2.0.0"}
+pydantic-settings = "^2.0.0"
+python-jose = {extras = ["cryptography"], version = "^3.3.0"}
+bcrypt = "^4.0.0"
+python-dotenv = "^1.0.0"
+slowapi = "^0.1.9"
+bleach = "^6.1.0"
+loguru = "^0.7.0"
+python-multipart = "^0.0.9"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.0.0"
+httpx = "^0.27.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
