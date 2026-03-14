@@ -8,7 +8,7 @@ RUN pip install poetry
 # Copy dependency files
 COPY pyproject.toml poetry.lock* ./
 
-# Install dependencies (no dev)
+# Install production dependencies only
 RUN poetry config virtualenvs.create false \
     && poetry install --only main --no-interaction --no-ansi
 
@@ -16,6 +16,10 @@ COPY . .
 
 RUN mkdir -p logs
 
-EXPOSE 8000
+# Cloud Run sets $PORT automatically — default 8080
+ENV PORT=8080
 
-CMD ["python", "-m", "app.main"]
+EXPOSE 8080
+
+# Use shell form to read $PORT at runtime
+CMD uvicorn app.main:app --host 0.0.0.0 --port $PORT
