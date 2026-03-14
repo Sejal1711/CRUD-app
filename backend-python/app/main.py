@@ -41,7 +41,12 @@ app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://localhost:3000", settings.FRONTEND_URL],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://localhost:3000",
+        "https://crud-app-seven.vercel.app",
+        settings.FRONTEND_URL,
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
